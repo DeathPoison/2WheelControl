@@ -5,6 +5,8 @@
 
 This application was writen to Controll a two Wheel Robot based on Tinkerforge!
 
+Start this Script by execute the control.py file with Python!
+
 You need the following Tinkerforge Bricks to run this Python Script:
 	- 1x Master Brick
 	- 2x DC Brick

@@ -12,6 +12,9 @@ You need the following Tinkerforge Bricks to run this Python Script:
 	- 2x DC Brick
 	- 1x LCD 20x4 Display
 
+Python needs the PyGame Package to run correctly!
+And the actually Tinkerforge Python Bindings!
+
 # Changelog
  .0 Initial Version, only Drive :P           - key: arrow up/down
  .1 Added Velocontrol

@@ -31,17 +31,9 @@ from tinkerforge.brick_master import Master
 import pygame, sys
 from pygame.locals import *
 
-#import thread um 2 schleifen parallel laufen zu lassen
-import thread
-
 #import fuer sleep
 from time import sleep
 import subprocess
-
-# Erstelle Funktion fuer den ersten Thread
-# Er kuemmert sich um das Display und die Statusabfragen
-def startStatus():
-    thread.start_new_thread(status, ())
 
 # Callback function for position callback (parameter has range -150 to 150)
 def cb_position(position):
@@ -169,11 +161,9 @@ def status():
 
 # Hier beginnt die Haupt-Steuer-Funktion!!!!! Laeuft deutlich schneller als Statusabfrage!
 def Control(velol,velor,hz,acc):
-
-    # uebernimmt jetzt getVars()
-    # Setze velor und velol zurueck
-    #velol = 0
-    #velor = 0
+ 
+    # Create timeStatus as timer for status
+    timeStatus = 0
 
     # Erstelle Pruefprogramm ob der maxwert erreicht und positiv ist
     def posVelo(vl, vr):
@@ -198,6 +188,9 @@ def Control(velol,velor,hz,acc):
         # Setze Starndartwert fuer Steuerung
         # clock 5 fuer einzelschritte, 30 fuer fluessige wiederholung
         clock.tick(30)
+
+        # Count timeStatus for slow status down
+        timeStatus = timeStatus + 1
 
         #################################################################
         # Der Begin der Steuerung
@@ -369,6 +362,10 @@ def Control(velol,velor,hz,acc):
             print "DC Bricks disabled!"
             print "SPACE is being pressed"
 
+        # Check timeStatus for timing status()
+        if timeStatus % 1000 == 0:
+            status()
+
         # Mit ESC wird PyGame beendet - hier muss die Beendung der Schleife und des Programmes folgen
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -412,11 +409,9 @@ if __name__ == "__main__":
     hz = 0
     acc = 0
     getVars(velol, velor, hz, acc)
-    
-    #Hier wird der erste Thread gestartet, er kuemmert sich ums Display
-    startStatus()
 
     #Hier der zweite thread der sich um die Steuerung kuemmert, er laueft deutlich schneller!
+    #Hier wird nun auch der Status abgefragt - ca. je 1sec * 6 / 1000 !!
     Control(velol, velor, hz, acc)
 
     #Display off - hier doof weil das display staendig resetet wird und am ende gehts nicht aus

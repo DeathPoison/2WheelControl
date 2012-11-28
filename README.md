@@ -18,7 +18,7 @@ Python needs the PyGame Package to run correctly!
 
 And the actually Tinkerforge Python Bindings!
 
-# Changelog
+# Changelog v1.8:
 
  - 0 Initial Version, only Drive :P           - key: arrow up/down
  - 1 Added Velocontrol
@@ -28,4 +28,4 @@ And the actually Tinkerforge Python Bindings!
  - 5 Added left/right control                 - key: arrow left/ight
  - 6 Added reset for left/right control       - key: r
  - 7 Added enable / disable power             - key: e, esc for exit
-
+ - 8 Merged threads! Add Counter for Status   - not Tested!

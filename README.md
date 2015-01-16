@@ -1,11 +1,13 @@
 2WheelControl
 =============
 
+!Note: this is one of my first Python Projects, plz bare with me!
+
 2WheelControl in Python
 
 This application was writen to Controll a two Wheel Robot based on Tinkerforge!
 
-# Start this Script by execute the control.py file with Python!
+# Requirements
 
 You need the following Tinkerforge Bricks to run this Python Script:
 
@@ -17,6 +19,13 @@ You need the following Tinkerforge Bricks to run this Python Script:
 Python needs the PyGame Package to run correctly!
 
 And the actually Tinkerforge Python Bindings!
+
+# Start the Robot 
+
+use control.py
+python control.py
+
+use Arrow-keys to navigate robot through your Room!
 
 # Changelog v1.8:
 

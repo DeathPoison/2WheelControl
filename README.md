@@ -3,7 +3,6 @@
 
 !Note: this is one of my first Python Projects, plz bare with me!
 
-2WheelControl in Python
 
 This application was writen to Controll a two Wheel Robot based on Tinkerforge!
 
